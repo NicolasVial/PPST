@@ -46,12 +46,22 @@ public class ArduinoManager : MonoBehaviour
         UduinoManager.Instance.digitalWrite(5, State.LOW);
         UduinoManager.Instance.digitalWrite(6, State.LOW);
         UduinoManager.Instance.digitalWrite(7, State.LOW);
+        UduinoManager.Instance.digitalWrite(8, State.LOW);
+        UduinoManager.Instance.digitalWrite(9, State.LOW);
+        UduinoManager.Instance.digitalWrite(10, State.LOW);
+        UduinoManager.Instance.digitalWrite(11, State.LOW);
+        UduinoManager.Instance.digitalWrite(12, State.LOW);
         UduinoManager.Instance.digitalWrite(13, State.LOW);
     }
 
     public void SetPinHigh(int pinNb)
     {
         StartCoroutine(SetPinHighCoroutine(pinNb));
+    }
+
+    public void SetPinAndStayHigh(int pinNb)
+    {
+        StartCoroutine(SetPinAndStayHighCoroutine(pinNb));
     }
 
     public void SetPinHighAndChoseWhenLow(int pinNb, float lowTime)
@@ -112,6 +122,12 @@ public class ArduinoManager : MonoBehaviour
         UduinoManager.Instance.digitalWrite(pinNb, State.HIGH);
         yield return new WaitForSeconds(TIME_BEFORE_LOW);
         UduinoManager.Instance.digitalWrite(pinNb, State.LOW);
+    }
+
+    private IEnumerator SetPinAndStayHighCoroutine(int pinNb)
+    {
+        UduinoManager.Instance.digitalWrite(pinNb, State.HIGH);
+        yield return null;
     }
 
     private IEnumerator SetPinHighAndChoseWhenLowCoroutine(int pinNb, float lowTime)
