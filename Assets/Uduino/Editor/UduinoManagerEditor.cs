@@ -765,7 +765,6 @@ namespace Uduino
         void MoveArduinoFiles(string dest)
         {
             string sourceDirectory = Application.dataPath + "/Uduino/Arduino/libraries";
-            //string sourceDirectory = "C:/Users/nicov/Documents/Arduino/libraries";
             string destinationDirectory = FirstToLower(dest);
             try
             {
